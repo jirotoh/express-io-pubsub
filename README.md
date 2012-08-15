@@ -1,4 +1,4 @@
-# Express to Socket.io publish/subscribe
+# Express to Socket.io PubSub
 
 ## Features
  * Allows an Express server to publish messages to a subscribed Socket.io server

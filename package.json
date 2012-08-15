@@ -1,7 +1,7 @@
 {
   "name": "express-io-pubsub",
   "version": "0.1.2",
-  "description": "Express server to Socket.io Server pubsub",
+  "description": "Express to Socket.io pubsub",
   "author": "Bryant Williams <b.n.williams@gmail.com>",
   "keywords": [
     "express",
