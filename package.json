@@ -23,6 +23,7 @@
   "devDependencies": {
     "express":        "3.0.x",
     "mongodb":        "1.1.x",
+    "redis":          "0.7.x",
     "socket.io":      "0.9.x"
   },
   "main": "./lib/express-io-pubsub.js"

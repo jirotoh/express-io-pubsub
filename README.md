@@ -38,8 +38,8 @@ io.sockets.on 'connection', (socket) ->
     socket.join room
 
 pubsub.listen io.sockets, {
+  collection: 'events'
   conn: 'mongodb://localhost:27017/test'
-  type: 'mongodb'
 }
 
 server.listen 3001
@@ -54,8 +54,8 @@ app = express()
 
 app.configure () ->
   app.use pubsub.middleware {
+    collection: 'events'
     conn: 'mongodb://localhost:27017/test'
-    type: 'mongodb'
   }
 app.get '/', (req, res) ->
   req.publish "lobby", "update", {msg: 'Hello World!'}

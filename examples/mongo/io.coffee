@@ -1,7 +1,7 @@
 express = require 'express'
 http    = require 'http'
 io      = require 'socket.io'
-pubsub  = require '../lib/express-io-pubsub'
+pubsub  = require '../../lib/express-io-pubsub'
 
 app = express()
 server = http.createServer app
@@ -30,7 +30,10 @@ io.sockets.on 'connection', (socket) ->
     socket.join room
 
 pubsub.listen io.sockets, {
-  conn: 'mongodb://localhost:27017/test'
+  collection: 'events'
+  database: 'test'
+  host: 'localhost'
+  port: 27017
   type: 'mongodb'
 }
 
