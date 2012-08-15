@@ -1,0 +1,29 @@
+{
+  "name": "express-io-pubsub",
+  "version": "0.1.1",
+  "description": "Express server to Socket.io Server pubsub",
+  "author": "Bryant Williams <b.n.williams@gmail.com>",
+  "keywords": [
+    "express",
+    "mongo",
+    "mongodb",
+    "pubsub",
+    "redis",
+    "socket.io"
+  ],
+  "scripts": {
+    "postinstall": "cake build",
+    "preinstall": "cake clean"
+  },
+  "homepage": "http://github.com/scien/express-io-pubsub.git",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/scien/express-io-pubsub.git"
+  },
+  "devDependencies": {
+    "express":        "3.0.x",
+    "mongodb":        "1.1.x",
+    "socket.io":      "0.9.x"
+  },
+  "main": "./lib/express-io-pubsub.js"
+}
