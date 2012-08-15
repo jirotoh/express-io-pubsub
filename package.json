@@ -20,10 +20,12 @@
     "type": "git",
     "url": "http://github.com/scien/express-io-pubsub.git"
   },
-  "devDependencies": {
-    "express":        "3.0.x",
+  "dependencies": {
     "mongodb":        "1.1.x",
     "redis":          "0.7.x",
+  },
+  "devDependencies": {
+    "express":        "3.0.x",
     "socket.io":      "0.9.x"
   },
   "main": "./lib/express-io-pubsub.js"
