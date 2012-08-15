@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "mongodb":        "1.1.x",
-    "redis":          "0.7.x",
+    "redis":          "0.7.x"
   },
   "devDependencies": {
     "express":        "3.0.x",
