@@ -1,7 +1,16 @@
 # Express to Socket.io publish/subscribe
 
-Allows express to publish messages to be received by a socket.io server. The
-servers can be completely independent.
+## Features
+ * Allows an Express server to publish messages to a subscribed Socket.io server
+ * Shared data storage can use MongoDB (capped collection tailable cursors) or Redis (pubsub)
+ * Servers can be completely independent. They just need to be able to connect to the data store
+
+## Description
+Express server connects to either a MongoDB capped collection or publishes to a Redis channel.
+This is accomplished through simple middleware making request.publish(room, event, data) available
+
+Socket.io server connects to the same collection or subscribes to a Redis channel.  This is done 
+through a listen command, and then the client can join the room/channel to listen to.
 
 ## Usage
 ### Socket.io
@@ -9,7 +18,7 @@ servers can be completely independent.
 express = require 'express'
 http    = require 'http'
 io      = require 'socket.io'
-pubsub  = require '../lib/express-io-pubsub'
+pubsub  = require '../../lib/express-io-pubsub'
 
 app = express()
 server = http.createServer app
@@ -39,7 +48,10 @@ io.sockets.on 'connection', (socket) ->
 
 pubsub.listen io.sockets, {
   collection: 'events'
-  conn: 'mongodb://localhost:27017/test'
+  database: 'test'
+  host: 'localhost'
+  port: 27017
+  type: 'mongodb'
 }
 
 server.listen 3001
@@ -48,14 +60,17 @@ server.listen 3001
 ### Express
 ```
 express = require 'express'
-pubsub  = require '../lib/express-io-pubsub'
+pubsub  = require '../../lib/express-io-pubsub'
 
 app = express()
 
 app.configure () ->
   app.use pubsub.middleware {
     collection: 'events'
-    conn: 'mongodb://localhost:27017/test'
+    database: 'test'
+    host: 'localhost'
+    port: 27017
+    type: 'mongodb'
   }
 app.get '/', (req, res) ->
   req.publish "lobby", "update", {msg: 'Hello World!'}
